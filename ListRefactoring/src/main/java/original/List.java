@@ -10,9 +10,7 @@ public class List {
 
 	public void add(Object element) {
 		if (!readOnly) {
-			int newSize = size + 1;
-
-			if (newSize > elementsStore.length) {
+			if (isElementsStoreFull()) {
 				Object[] newElementsStore = new Object[elementsStore.length + INCREASE_SIZE];
 				for (int i = 0; i < size; i++) {
 					newElementsStore[i] = elementsStore[i];
@@ -24,6 +22,10 @@ public class List {
 			elementsStore[size] = element;
 			size++;
 		}
+	}
+
+	private boolean isElementsStoreFull() {
+		return size + 1 > elementsStore.length;
 	}
 
 	public int size() {
