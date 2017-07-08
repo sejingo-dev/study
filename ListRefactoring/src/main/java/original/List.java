@@ -11,17 +11,21 @@ public class List {
 	public void add(Object element) {
 		if (!readOnly) {
 			if (isElementsStoreFull()) {
-				Object[] newElementsStore = new Object[elementsStore.length + INCREASE_SIZE];
-				for (int i = 0; i < size; i++) {
-					newElementsStore[i] = elementsStore[i];
-				}
-
-				elementsStore = newElementsStore;
+				increaseElementsStore();
 			}
 
 			elementsStore[size] = element;
 			size++;
 		}
+	}
+
+	private void increaseElementsStore() {
+		Object[] newElementsStore = new Object[elementsStore.length + INCREASE_SIZE];
+		for (int i = 0; i < size; i++) {
+			newElementsStore[i] = elementsStore[i];
+		}
+
+		elementsStore = newElementsStore;
 	}
 
 	private boolean isElementsStoreFull() {
