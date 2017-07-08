@@ -14,9 +14,13 @@ public class List {
 				increaseElementsStore();
 			}
 
-			elementsStore[size] = element;
-			size++;
+			addElements(element);
 		}
+	}
+
+	private void addElements(Object element) {
+		elementsStore[size] = element;
+		size++;
 	}
 
 	private void increaseElementsStore() {
