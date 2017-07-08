@@ -4,7 +4,7 @@ public class List {
 	private static final int INIT_SIZE = 10;
 	private static final int INCREASE_SIZE = 10;
 
-	private Object[] elements = new Object[INIT_SIZE];
+	private Object[] elementsStore = new Object[INIT_SIZE];
 	private boolean readOnly;
 	private int size = 0;
 
@@ -12,16 +12,16 @@ public class List {
 		if (!readOnly) {
 			int newSize = size + 1;
 
-			if (newSize > elements.length) {
-				Object[] newElements = new Object[elements.length + INCREASE_SIZE];
+			if (newSize > elementsStore.length) {
+				Object[] newElementsStore = new Object[elementsStore.length + INCREASE_SIZE];
 				for (int i = 0; i < size; i++) {
-					newElements[i] = elements[i];
+					newElementsStore[i] = elementsStore[i];
 				}
 
-				elements = newElements;
+				elementsStore = newElementsStore;
 			}
 
-			elements[size] = element;
+			elementsStore[size] = element;
 			size++;
 		}
 	}
@@ -31,6 +31,6 @@ public class List {
 	}
 
 	public Object get(int index) {
-		return elements[index];
+		return elementsStore[index];
 	}
 }
